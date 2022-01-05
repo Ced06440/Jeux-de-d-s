@@ -7,8 +7,27 @@
     <title>Jeux de dés</title>
 </head>
 <body>
-    <img src="dés-3.png" alt="Dés" class="dés">
-    <button class="btn-roll">Dés</button>
-    <button class="btn-hold">Ajouter</button>
+    <div>
+        <div class="playerOne active">
+            <div class="playerOneName">PLAYER 1</div>
+            <div class="scoreOne">0</div>
+            <div class="box">
+                <div class="labelScore">Score en cours</div>
+                <div class="scoreEnCours" id="score">0</div>
+            </div>
+        </div>
+        <!--<div class="playerTwo">
+            <div class="playerTwoName">PLAYER 2</div>
+            <div class="scoreTwo">0</div>
+            <div class="box">
+                <div class="labelScore">Score en cours</div>
+                <div class="score">0</div>
+            </div>-->
+        </div>
+    </div>
+    <img src="./dés-3.png" alt="Dice" class="dés">
+    <button class="lancer">Lancer le dés</button>
+    <button class="ajouter">Ajouter la somme</button>
 </body>
+<script src="./Game.js"></script>
 </html>
