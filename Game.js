@@ -1,12 +1,13 @@
 let score = document.querySelector('.scoreGlobal-0');
 let roundScore = document.getElementById('#score-0');
-let gamePlaying = false;
-let player1 = document.querySelector('.player-0');
-let player2 = document.querySelector('.player-1');
+let gamePlaying = true;
+let activePlayer
 
+init()
 
-document.querySelector('.lancer').addEventListener('click', function() {
-    
+//function du boutton lance le dés
+document.querySelector('.btn-lancer').addEventListener('click', function() {
+    if(gamePlaying){
         //Numeros dés au hasard
         var dice = Math.floor(Math.random()*6)+1;
 
@@ -16,25 +17,60 @@ document.querySelector('.lancer').addEventListener('click', function() {
 
         //Ajout de la régle, si le dés tombe sur 1 c'est au tour du joueur suivant
         if (dice !== 1) {
-            document.querySelector('#score-0').textContent = roundScore += dice;
+            document.querySelector('#score-' + activePlayer).textContent = roundScore += dice;
         } else {
-            document.querySelector('#score-0').textContent =roundScore = 0;
+            document.querySelector('#score-' + activePlayer).textContent =roundScore = 0;
             nextPlayer();
-        }  
+        }
+    };  
 });
 
-document.querySelector('.ajouter').addEventListener('click', function() {
+// Ajout du boutton qui permet d'ajouter le score en cours au score global
+document.querySelector('.btn-ajouter').addEventListener('click', function() {
+    if(gamePlaying){
+        let scoreG = roundScore + score;
+        document.querySelector('#scoreGlobal-' + activePlayer).textContent = scoreG;
 
-    let scoreG = roundScore + score;
-    document.querySelector('#scoreGlobal-0').textContent = scoreG;
+        document.querySelector('#score-' + activePlayer).textContent=0
 
-    document.querySelector('#score-0').textContent=0
-
-    if(scoreG >= 100){
-        document.querySelector('player-0').classList.add('winner');
-        document.querySelector('player-0').classList.remove('active')
-    }else{
-        nextPlayer()
-    }
-
+        //condition de victoire si le score global atteint 100, la partie est gagné
+        if(scoreG >= 100){
+            document.querySelector('player-' + activePlayer).classList.add('winner');
+            document.querySelector('player-' + activePlayer).classList.remove('active')
+        }else{
+            nextPlayer()
+        }
+    };
 });
+
+function nextPlayer(){
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+
+    document.querySelector('.player-0').classList.toggle('active');
+    document.querySelector('.player-1').classList.toggle('active');
+};
+
+document.querySelector('.btn-NouvellePartie').addEventListener('click', init);
+
+function init() {
+    score = 0;
+    activePlayer = 0;
+    roundScore = 0;
+    gamePlaying = true;
+
+    document.getElementById('scoreGlobal-0').textContent = '0';
+    document.getElementById('scoreGlobal-1').textContent = '0';
+    document.getElementById('score-0').textContent ='0';
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('name-0').textContent = 'Player 1';
+    document.getElementById('name-1').textContent = 'Player 2';
+    document.querySelector('.player-0').classList.remove('winner');
+    document.querySelector('.player-1').classList.remove('winner');
+    document.querySelector('.player-0').classList.remove('active');
+    document.querySelector('.player-1').classList.remove('active');
+    document.querySelector('.player-0').classList.add('active');
+}
