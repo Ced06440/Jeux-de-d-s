@@ -1,9 +1,9 @@
 let score = document.querySelector('.scoreGlobal-');
 let roundScore = document.getElementById('#score-');
 let gamePlaying = true;
-let activePlayer
+let joueurActif
 
-init()
+rejouer()
 
 //function du boutton lance le dés
 document.querySelector('.btn-lancer').addEventListener('click', function() {
@@ -17,9 +17,9 @@ document.querySelector('.btn-lancer').addEventListener('click', function() {
 
         //Ajout de la régle, si le dés tombe sur 1 c'est au tour du joueur suivant
         if (dice !== 1) {
-            document.querySelector('#score-' + activePlayer).textContent = roundScore += dice;
+            document.querySelector('#score-' + joueurActif).textContent = roundScore += dice;
         } else {
-            document.querySelector('#score-' + activePlayer).textContent =roundScore = 0;
+            document.querySelector('#score-' + joueurActif).textContent =roundScore = 0;
             nextPlayer();
         }
     };  
@@ -29,16 +29,17 @@ document.querySelector('.btn-lancer').addEventListener('click', function() {
 document.querySelector('.btn-ajouter').addEventListener('click', function() {
     if(gamePlaying){
 
-        let scoreG = roundScore + score;
-        score = scoreG;
+        //Ajoute le roundscore au score Global
+        score += roundScore;
 
-        document.querySelector('#scoreGlobal-' + activePlayer).textContent = score;
+        document.querySelector('#scoreGlobal-' + joueurActif).textContent = score;
         console.log(score)
 
         //condition de victoire si le score global atteint 100, la partie est gagné
-        if(scoreG >= 100){
-            document.querySelector('player-' + activePlayer).classList.add('winner');
-            document.querySelector('player-' + activePlayer).classList.remove('active')
+        if(score >= 100){
+            document.querySelector('player-' + joueurActif).classList.add('winner');
+            document.querySelector('player-' + joueurActif).classList.remove('active');
+            gamePlaying = false;
         }else{
             nextPlayer()
         }
@@ -46,7 +47,7 @@ document.querySelector('.btn-ajouter').addEventListener('click', function() {
 });
 
 function nextPlayer(){
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    joueurActif === 0 ? joueurActif = 1 : joueurActif = 0;
     roundScore = 0;
 
     document.getElementById('score-0').textContent = '0';
@@ -56,11 +57,11 @@ function nextPlayer(){
     document.querySelector('.player-1').classList.toggle('active');
 };
 
-document.querySelector('.btn-nouvellePartie').addEventListener('click', init);
+document.querySelector('.btn-nouvellePartie').addEventListener('click', rejouer);
 
-function init() {
+function rejouer() {
     score = 0;
-    activePlayer = 0;
+    joueurActif = 0;
     roundScore = 0;
     gamePlaying = true;
 
@@ -75,4 +76,4 @@ function init() {
     document.querySelector('.player-0').classList.remove('active');
     document.querySelector('.player-1').classList.remove('active');
     document.querySelector('.player-0').classList.add('active');
-}
+};
