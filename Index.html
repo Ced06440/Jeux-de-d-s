@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Jeux de dés</title>
 </head>
 <body>
     <div>
-        <div class="playerOne active">
-            <div class="playerOneName">PLAYER 1</div>
-            <div class="scoreOne">0</div>
+        <div class="player-0 active">
+            <div class="playerOneName" id="name-0">PLAYER 1</div>
+            <div class="scoreOne" id="scoreGlobal-0">0</div>
             <div class="box">
                 <div class="labelScore">Score en cours</div>
-                <div class="scoreEnCours" id="score">0</div>
+                <div class="scoreEnCours" id="score-0">0</div>
             </div>
         </div>
-        <!--<div class="playerTwo">
-            <div class="playerTwoName">PLAYER 2</div>
-            <div class="scoreTwo">0</div>
+        <div class="player-1">
+            <div class="playerTwoName" id='name-1'>PLAYER 2</div>
+            <div class="scoreTwo" id="scoreGlobal-1">0</div>
             <div class="box">
                 <div class="labelScore">Score en cours</div>
-                <div class="score">0</div>
-            </div>-->
+                <div class="scoreEnCours" id="score-1">0</div>
+            </div>
         </div>
     </div>
     <img src="./dés-3.png" alt="Dice" class="dés">
