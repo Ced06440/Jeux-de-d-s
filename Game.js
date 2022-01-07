@@ -1,5 +1,5 @@
-let score = document.querySelector('.scoreGlobal-0');
-let roundScore = document.getElementById('#score-0');
+let score = document.querySelector('.scoreGlobal-');
+let roundScore = document.getElementById('#score-');
 let gamePlaying = true;
 let activePlayer
 
@@ -28,10 +28,12 @@ document.querySelector('.btn-lancer').addEventListener('click', function() {
 // Ajout du boutton qui permet d'ajouter le score en cours au score global
 document.querySelector('.btn-ajouter').addEventListener('click', function() {
     if(gamePlaying){
-        let scoreG = roundScore + score;
-        document.querySelector('#scoreGlobal-' + activePlayer).textContent = scoreG;
 
-        document.querySelector('#score-' + activePlayer).textContent=0
+        let scoreG = roundScore + score;
+        score = scoreG;
+
+        document.querySelector('#scoreGlobal-' + activePlayer).textContent = score;
+        console.log(score)
 
         //condition de victoire si le score global atteint 100, la partie est gagné
         if(scoreG >= 100){
@@ -54,7 +56,7 @@ function nextPlayer(){
     document.querySelector('.player-1').classList.toggle('active');
 };
 
-document.querySelector('.btn-NouvellePartie').addEventListener('click', init);
+document.querySelector('.btn-nouvellePartie').addEventListener('click', init);
 
 function init() {
     score = 0;
