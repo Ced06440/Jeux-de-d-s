@@ -1,7 +1,25 @@
-.active{
-    background-color: red;
+@import url('https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap');
+body{
+   background-image: url(image/1000_F_310503054_1Atoriyv6rfZ6hQITTPLUAy6CUfATZTK.jpg);
+   background-repeat:no-repeat;
+   background-size: 100% 100%;
 }
 
 .winner{
-    background-color: aqua;
+    
+}
+
+.btn-newPartie, .gridGame, .player-1, .player-0, .btn-nouvellePartie{
+    font-family: 'Freckle Face', cursive;
+    font-size:x-large;
+}
+.playerOneName, .playerTwoName{
+    font-size: xx-large;
+}
+.active{
+    color:blueviolet;
+}
+.btn-nouvellePartie{
+
+    
 }

@@ -1,35 +1,45 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Jeux de dés</title>
+
 </head>
-<body>
-    <div>
-        <div class="player-0 active">
-            <div class="playerOneName" id="name-0">PLAYER 1</div>
-            <div class="scoreOne" id="scoreGlobal-0">0</div>
-            <div class="box">
-                <div class="labelScore">Score en cours</div>
-                <div class="scoreEnCours" id="score-0">0</div>
+<body class="h-full relative h-full w-full">
+        <div class="grid grid-cols-3 gap-5">
+
+            <div class="player-0 active max-w-max grid rows-5 justify-items-center place-content-start place-self-center absolute left-60 top-1">
+                <div class="playerOneName text-8xl rows-1" id="name-0">Player 1</div>
+                <div class="scoreGlobal rows-1 text-4xl">Score GLOBAL</div>
+                <div class="scoreOne rows-1 text-6xl" id="scoreGlobal-0">0</div>
+                <div class="labelScore rows-1 text-4xl">Score en cours</div>
+                <div class="scoreEnCours rows-1 text-6xl" id="score-0">0</div>
+            </div>
+
+            <div class="gridGame max-w-max grid rows-3 justify-items-center place-self-center absolute top-60">
+                <div class="rows-1">
+                    <button class="btn-nouvellePartie text-6xl m-10">Nouvelle partie</button>
+                </div>
+                <img class="dés rows-1" style="width: 200px; height: 200px;" src="./dés-3.png" alt="Dice">
+                <div class="rows-1">
+                    <button class="btn-lancer text-4xl">Lancer le dés</button>
+                    <button class="btn-ajouter text-4xl m-10">Ajouter la somme</button>
+                </div>
+            </div>
+
+            <div class="player-1 max-w-max grid rows-5 justify-items-center place-content-start place-self-center absolute bottom-0 right-40">
+                <div class="playerTwoName text-8xl rows-1" id='name-1'>Player 2</div>
+                <div class="scoreGlobal rows-1 text-4xl">Score GLOBAL</div>
+                <div class="scoreTwo rows-1 text-6xl" id="scoreGlobal-1">0</div>
+                <div class="labelScore rows-1 text-4xl">Score en cours</div>
+                <div class="scoreEnCours rows-1 text-6xl" id="score-1">0</div>
             </div>
         </div>
-        <div class="player-1">
-            <div class="playerTwoName" id='name-1'>PLAYER 2</div>
-            <div class="scoreTwo" id="scoreGlobal-1">0</div>
-            <div class="box">
-                <div class="labelScore">Score en cours</div>
-                <div class="scoreEnCours" id="score-1">0</div>
-            </div>
-        </div>
-    </div>
-    <img src="./dés-3.png" alt="Dice" class="dés">
-    <button class="btn-lancer">Lancer le dés</button>
-    <button class="btn-ajouter">Ajouter la somme</button>
-    <button class="btn-nouvellePartie">Recommencer</button>
+
 </body>
 <script src="./Game.js"></script>
 </html>

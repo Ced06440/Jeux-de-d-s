@@ -1,18 +1,19 @@
-let score;
+let score = [] ;
 let scoreEnCours;
 let jouer = true;
 let joueurActif
 
 rejouer()
+fenetre()
 
 //function du boutton lance le dés
 document.querySelector('.btn-lancer').addEventListener('click', function() {
     if(jouer){
         //Numeros dés au hasard
-        var dice = Math.floor(Math.random()*6)+1;
+        let dice = Math.floor(Math.random()*6)+1;
 
         //Affichage face du dés
-        var diceDOM = document.querySelector('.dés');
+        let diceDOM = document.querySelector('.dés');
         diceDOM.src = 'dés-' + dice + '.png';
 
         //Ajout de la régle, si le dés tombe sur 1 c'est au tour du joueur suivant
@@ -30,13 +31,15 @@ document.querySelector('.btn-ajouter').addEventListener('click', function() {
     if(jouer){
 
         //Ajoute le roundscore au score Global
-        score += scoreEnCours;
+        
+        score[joueurActif] += scoreEnCours;
 
-        document.querySelector('#scoreGlobal-' + joueurActif).textContent = score;
+        document.querySelector('#scoreGlobal-' + joueurActif).textContent = score[joueurActif];
         console.log(score)
 
         //condition de victoire si le score global atteint 100, la partie est gagné
-        if(score >= 100){
+        if(score[joueurActif] >= 100){
+            
             document.querySelector('.player-' + joueurActif).classList.add("winner");
             document.querySelector('.player-' + joueurActif).classList.remove('active');
             jouer = false;
@@ -60,11 +63,12 @@ function nextPlayer(){
 document.querySelector('.btn-nouvellePartie').addEventListener('click', rejouer);
 
 function rejouer() {
-    score = 0;
+    score = [0,0];
     joueurActif = 0;
     scoreEnCours = 0;
     jouer = true;
-
+    
+    
     document.getElementById('scoreGlobal-0').textContent = '0';
     document.getElementById('scoreGlobal-1').textContent = '0';
     document.getElementById('score-0').textContent ='0';
@@ -77,3 +81,7 @@ function rejouer() {
     document.querySelector('.player-1').classList.remove('active');
     document.querySelector('.player-0').classList.add('active');
 };
+
+function fenetre(){
+    alert(`Bienvenue dans un jeu de dés, ou le but est d'atteindre le score de 100 avant son adversaire, ci tu tombe sur le nombre 1 tu perd ton score en cours. Alors arrete toi au bon moment !!!! BONNE CHANCE `)
+}
