@@ -4,7 +4,7 @@ let jouer = true;
 let joueurActif
 
 rejouer()
-fenetre()
+//fenetre()
 
 //function du boutton lance le dés
 document.querySelector('.btn-lancer').addEventListener('click', function() {
@@ -42,6 +42,7 @@ document.querySelector('.btn-ajouter').addEventListener('click', function() {
             
             document.querySelector('.player-' + joueurActif).classList.add("winner");
             document.querySelector('.player-' + joueurActif).classList.remove('active');
+            document.getElementById('name-' + joueurActif).textContent = 'Winner!';
             jouer = false;
         }else{
             nextPlayer()
