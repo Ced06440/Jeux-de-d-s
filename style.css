@@ -4,12 +4,10 @@ body{
    background-repeat:no-repeat;
    background-size: 100% 100%;
 }
-
 .winner{
     background-color: blue;
     border: 5px greenyellow solid;
 }
-
 .btn-newPartie, .gridGame, .player-1, .player-0, .btn-nouvellePartie{
     font-family: 'Freckle Face', cursive;
     font-size:x-large;
@@ -19,7 +17,4 @@ body{
 }
 .active{
     color:blueviolet;
-}
-.btn-nouvellePartie{
-
 }
